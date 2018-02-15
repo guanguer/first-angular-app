@@ -1,0 +1,47 @@
+<div class="container">
+  <!-- COURSES LIST -->
+  <div class="col-50">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h1>Courses</h1>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list *ngIf="courses | async as courses else noData">
+          <mat-list-item *ngFor="let course of courses">
+            <h3 mat-line>{{course.name}}</h3>
+            <button mat-icon-button>
+              <mat-icon>close</mat-icon>
+            </button>
+            <p mat-line>
+              {{course.description}}
+            </p>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- COURSE DETAILS -->
+  <div class="col-50">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h1>
+            Select a Course
+          </h1>
+        </mat-card-title>
+      </mat-card-header>
+      <form>
+        <mat-card-content>
+          SELECTED COURSE DETAILS
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" mat-button>Save</button>
+          <button type="button" mat-button>Cancel</button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+</div>

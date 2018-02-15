@@ -23,15 +23,12 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'coverage-istanbul'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['PhantomJS'],
-    singleRun: true,
-    colors: true,
-    logLevel: 'INFO',
-    reporters: ['progress', 'coverage-istanbul']
+    singleRun: true
   });
 };

@@ -1,5 +1,14 @@
 {
-    "instructors": [
-        
+    "courses": [
+        {
+            "id": 1,
+            "name": "Angular FTW",
+            "description": "Angular introduction course"
+        },
+        {
+            "id": 2,
+            "name": "Redux Pattern",
+            "description": "Grasp on basic concepts of Redux patter"
+        }
     ]
 }
