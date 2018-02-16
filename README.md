@@ -1,5 +1,7 @@
 # FirstAngularApp
 
+[![Build Status](https://travis-ci.org/guanguer/first-angular-app.svg?branch=master)](https://travis-ci.org/guanguer/first-angular-app)
+
 A first test app built using Angular, Angular Material and the Angular CLI.  It is based on the FrontEndMasters course [Building Awsomer Apps with Angular](https://frontendmasters.com/courses/building-apps-angular) by [Lukas Ruebbelke](https://github.com/simpulton).
 
 ## Prerequisites
