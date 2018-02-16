@@ -1,6 +1,6 @@
 # FirstApp
 
-A first test app built using Angular, Angular Material and the Angular CLI.
+A first test app built using Angular, Angular Material and the Angular CLI.  It is based on the FrontEndMasters course Building Awsomer Apps with Angular by Lukas Ruebbelke.
 
 ## Prerequisites
 - Node.js v6.9+ and NPM v3.x
