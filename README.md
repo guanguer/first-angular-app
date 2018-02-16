@@ -1,6 +1,8 @@
-# FirstApp
+# FirstAngularApp
 
-A first test app built using Angular, Angular Material and the Angular CLI.
+[![Build Status](https://travis-ci.org/guanguer/first-angular-app.svg?branch=master)](https://travis-ci.org/guanguer/first-angular-app)
+
+A first test app built using Angular, Angular Material and the Angular CLI.  It is based on the FrontEndMasters course [Building Awsomer Apps with Angular](https://frontendmasters.com/courses/building-apps-angular) by [Lukas Ruebbelke](https://github.com/simpulton).
 
 ## Prerequisites
 - Node.js v6.9+ and NPM v3.x
@@ -25,11 +27,11 @@ Run `ng lint` to run the tslint.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `npm run build-prod` for a production build.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 

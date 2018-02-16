@@ -6,8 +6,9 @@
     "ng": "ng",
     "start": "concurrently \"npm run server\" \"ng serve\"",
     "server": "json-server server/api/db.json --watch",
-    "build": "ng build --prod",
-    "test": "ng test",
+    "build": "ng build && ng lint && npm test --code-coverage",
+    "build-prod": "ng build --prod",
+    "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
