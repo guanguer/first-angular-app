@@ -11,6 +11,8 @@ const dummyCourses = [
   { id: 2, name: 'Redux', description: 'Redux Rules!' }
 ];
 
+const newCourse = {id: null, name: 'Reactive Angular', description: 'Reactive Angular Forms'};
+
 describe('Service: Courses', () => {
   let injector: TestBed;
   let service: CoursesService;
@@ -48,13 +50,64 @@ describe('Service: Courses', () => {
     });
 
     it('should handle error while getting courses', () => {
-      service.get().subscribe(() => {}, err => {
-        expect(err.status).toBe(404);
-      });
+      service.get().subscribe(
+        () => {},
+        err => {
+          expect(err.status).toBe(404);
+        }
+      );
 
       const req = httpMock.expectOne(`${service.API_URL}`);
       expect(req.request.method).toBe('GET');
-      req.error(null, {status: 404, statusText: 'Not Found Error'});
+      req.error(null, { status: 404, statusText: 'Not Found Error' });
+    });
+  });
+
+  describe('Service: create method', () => {
+    afterEach(() => {
+      httpMock.verify();
+    });
+
+    it('should allow course creation', () => {
+      service.create(newCourse).subscribe(res => {
+        expect(res).toBeDefined();
+      });
+
+      const req = httpMock.expectOne(`${service.API_URL}`);
+      expect(req.request.method).toBe('POST');
+    });
+  });
+
+  describe('Service: update method', () => {
+    afterEach(() => {
+      httpMock.verify();
+    });
+
+    it('should allow course update', () => {
+      const course = dummyCourses[0];
+      service.update(course).subscribe(res => {
+        expect(res).toBeDefined();
+      });
+
+      const req = httpMock.expectOne(`${service.API_URL}${course.id}`);
+      expect(req.request.method).toBe('PUT');
+    });
+  });
+
+  describe('Service: delete method', () => {
+    afterEach(() => {
+      httpMock.verify();
+    });
+
+    it('should allow course deletion', () => {
+      const course = dummyCourses[0];
+      service.delete(course).subscribe(res => {
+        console.log(res);
+        expect(res).toBeDefined();
+      });
+
+      const req = httpMock.expectOne(`${service.API_URL}${course.id}`);
+      expect(req.request.method).toBe('DELETE');
     });
   });
 });

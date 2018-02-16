@@ -13,10 +13,12 @@ import { Course } from '../model/course.model';
 export class CoursesComponent implements OnInit {
   courses: Observable<Course[]>;
   selectedCourse: Course;
+  selectedName: string;
 
   constructor(private coursesService: CoursesService) {}
 
   ngOnInit() {
+    this.reset();
     this.getCourses();
   }
 
@@ -24,11 +26,45 @@ export class CoursesComponent implements OnInit {
     this.courses = this.coursesService.get();
   }
 
-  selectCourse(course: Course) {
-    this.selectedCourse = course;
+  select(course: Course) {
+    this.selectedCourse = Object.assign({}, course);
+    this.selectedName = course.name;
   }
 
-  resetCourse() {
+  reset() {
     this.selectedCourse = {id: null, name: '', description: ''};
+    this.selectedName = '';
+  }
+
+  save(course: Course) {
+    if (!course.id) {
+      this.create(course);
+    } else {
+      this.update(course);
+    }
+  }
+
+  create(course: Course) {
+    this.coursesService.create(course)
+      .subscribe(res => {
+        this.getCourses();
+        this.reset();
+      });
+  }
+
+  update(course: Course) {
+    this.coursesService.update(course)
+      .subscribe(res => {
+        this.getCourses();
+        this.reset();
+      });
+  }
+
+  delete(course: Course) {
+    this.coursesService.delete(course)
+      .subscribe(res => {
+        this.getCourses();
+        this.reset();
+      });
   }
 }

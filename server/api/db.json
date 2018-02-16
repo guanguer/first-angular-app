@@ -1,14 +1,19 @@
 {
-    "courses": [
-        {
-            "id": 1,
-            "name": "Angular FTW",
-            "description": "Angular introduction course"
-        },
-        {
-            "id": 2,
-            "name": "Redux Pattern",
-            "description": "Grasp on basic concepts of Redux pattern"
-        }
-    ]
+  "courses": [
+    {
+      "id": 1,
+      "name": "Angular FTW",
+      "description": "Angular introduction course"
+    },
+    {
+      "id": 2,
+      "name": "Redux Pattern",
+      "description": "Grasp on basic concepts of Redux pattern"
+    },
+    {
+      "id": 3,
+      "name": "Reactive Angular Forms",
+      "description": "Have fun with reactive forms in Angular"
+    }
+  ]
 }
