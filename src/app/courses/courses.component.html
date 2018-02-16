@@ -9,7 +9,7 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list *ngIf="courses | async as courses else noData">
-          <mat-list-item *ngFor="let course of courses">
+          <mat-list-item *ngFor="let course of courses" (click)="selectCourse(course)">
             <h3 mat-line>{{course.name}}</h3>
             <button mat-icon-button>
               <mat-icon>close</mat-icon>
@@ -29,17 +29,18 @@
       <mat-card-header>
         <mat-card-title>
           <h1>
-            Select a Course
+            <span *ngIf="selectedCourse?.id; else prompt">Editing {{selectedCourse.name}}</span>
+            <ng-template #prompt>Select a Course</ng-template>
           </h1>
         </mat-card-title>
       </mat-card-header>
       <form>
         <mat-card-content>
-          SELECTED COURSE DETAILS
+          <pre>{{selectedCourse | json}}</pre>
         </mat-card-content>
         <mat-card-actions>
           <button type="submit" mat-button>Save</button>
-          <button type="button" mat-button>Cancel</button>
+          <button type="button" mat-button (click)="resetCourse()">Cancel</button>
         </mat-card-actions>
       </form>
     </mat-card>

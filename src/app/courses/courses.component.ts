@@ -12,6 +12,7 @@ import { Course } from '../model/course.model';
 })
 export class CoursesComponent implements OnInit {
   courses: Observable<Course[]>;
+  selectedCourse: Course;
 
   constructor(private coursesService: CoursesService) {}
 
@@ -21,5 +22,13 @@ export class CoursesComponent implements OnInit {
 
   getCourses() {
     this.courses = this.coursesService.get();
+  }
+
+  selectCourse(course: Course) {
+    this.selectedCourse = course;
+  }
+
+  resetCourse() {
+    this.selectedCourse = {id: null, name: '', description: ''};
   }
 }

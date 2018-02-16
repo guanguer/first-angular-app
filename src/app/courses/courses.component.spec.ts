@@ -1,4 +1,4 @@
-import { TestBed, async, getTestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
@@ -8,7 +8,12 @@ import { CoursesComponent } from './courses.component';
 import { CoursesService } from '../services/courses.service';
 import { Course } from '../model/course.model';
 
-const courses: Observable<Course[]> = Observable.of([]);
+const course: Course = {
+  id: 1,
+  name: 'Testing Angular',
+  description: 'Testing Angular Applications'
+};
+const courses: Observable<Course[]> = Observable.of([course]);
 
 class CoursesServiceStub {
   get() {
@@ -17,30 +22,34 @@ class CoursesServiceStub {
 }
 
 describe('CoursesComponent', () => {
-  let injector: TestBed;
-  let service: CoursesServiceStub;
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        imports: [AppMaterialModule],
-        declarations: [CoursesComponent],
-        providers: [
-          {provide: CoursesService, useClass: CoursesServiceStub}
-        ]
-      }).compileComponents();
-      injector = getTestBed();
-      service = injector.get(CoursesService);
-    })
-  );
+  let component: CoursesComponent;
 
-  it(
-    'should create the courses component',
-    async(() => {
-      const fixture = TestBed.createComponent(CoursesComponent);
-      const component = fixture.debugElement.componentInstance;
-      fixture.detectChanges();
-      expect(component).toBeTruthy();
-      expect(component.courses).toBe(courses);
-    })
-  );
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [AppMaterialModule],
+      declarations: [CoursesComponent],
+      providers: [{ provide: CoursesService, useClass: CoursesServiceStub }]
+    });
+
+    const fixture = TestBed.createComponent(CoursesComponent);
+    component = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create the courses component', () => {
+    expect(component).toBeTruthy();
+    expect(component.courses).toBe(courses);
+  });
+
+  it('should allow course selection', () => {
+    component.selectCourse(course);
+    expect(component.selectedCourse).toBe(course);
+  });
+
+  it('should allow reset selection', () => {
+    component.selectCourse(course);
+    expect(component.selectedCourse).toBe(course);
+    component.resetCourse();
+    expect(component.selectedCourse.id).toBe(null);
+  });
 });
