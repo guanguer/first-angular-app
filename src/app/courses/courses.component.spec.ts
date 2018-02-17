@@ -7,6 +7,8 @@ import 'rxjs/add/observable/of';
 
 import { AppMaterialModule } from '../app-material.module';
 import { CoursesComponent } from './courses.component';
+import { CoursesListComponent } from './courses-list/courses-list.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { CoursesService } from '../services/courses.service';
 import { Course } from '../model/course.model';
 
@@ -34,7 +36,7 @@ describe('CoursesComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [AppMaterialModule, FormsModule, BrowserAnimationsModule],
-      declarations: [CoursesComponent],
+      declarations: [CoursesComponent, CoursesListComponent, CourseDetailComponent],
       providers: [{provide: CoursesService, useClass: CoursesServiceStub}]
     });
 
@@ -55,17 +57,14 @@ describe('CoursesComponent', () => {
   describe('Course selection', () => {
     it('should allow course selection', () => {
       component.select(course);
-      expect(component.selectedCourse).not.toBe(course);
-      expect(component.selectedCourse.id).toBe(course.id);
-      expect(component.selectedCourse.name).toBe(course.name);
-      expect(component.selectedCourse.description).toBe(course.description);
+      expect(component.selectedCourse).toBe(course);
     });
   });
 
   describe('Course reset', () => {
     it('should allow reset selection', () => {
       component.select(course);
-      expect(component.selectedCourse.id).toBe(course.id);
+      expect(component.selectedCourse).toBe(course);
       component.reset();
       expect(component.selectedCourse.id).toBe(null);
     });

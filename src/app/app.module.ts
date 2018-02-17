@@ -9,13 +9,17 @@ import { AppMaterialModule } from './app-material.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
+import { CoursesListComponent } from './courses/courses-list/courses-list.component';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CoursesService } from './services';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CoursesComponent
+    CoursesComponent,
+    CoursesListComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
