@@ -13,7 +13,6 @@ import { Course } from '../model/course.model';
 export class CoursesComponent implements OnInit {
   courses: Observable<Course[]>;
   selectedCourse: Course;
-  selectedName: string;
 
   constructor(private coursesService: CoursesService) {}
 
@@ -27,13 +26,11 @@ export class CoursesComponent implements OnInit {
   }
 
   select(course: Course) {
-    this.selectedCourse = Object.assign({}, course);
-    this.selectedName = course.name;
+    this.selectedCourse = course;
   }
 
   reset() {
     this.selectedCourse = {id: null, name: '', description: ''};
-    this.selectedName = '';
   }
 
   save(course: Course) {
