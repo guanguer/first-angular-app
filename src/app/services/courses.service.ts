@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
 
@@ -41,5 +41,10 @@ export class CoursesService {
     return this.httpClient.delete(
       `${this.API_URL}${course.id}`
     );
+  }
+
+  search(searchTerm: string) {
+    const params = new HttpParams().set('q', searchTerm);
+    return this.httpClient.get(this.API_URL, { params });
   }
 }

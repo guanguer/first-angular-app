@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CoursesListComponent } from './courses/courses-list/courses-list.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CoursesSearchComponent } from './courses/courses-search/courses-search.component';
 import { CoursesService } from './services';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CoursesService } from './services';
     HomeComponent,
     CoursesComponent,
     CoursesListComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CoursesSearchComponent
   ],
   imports: [
     BrowserModule,

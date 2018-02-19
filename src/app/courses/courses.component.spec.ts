@@ -11,21 +11,12 @@ import { CoursesListComponent } from './courses-list/courses-list.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import { CoursesService } from '../services/courses.service';
 import { Course } from '../model/course.model';
+import { CoursesServiceStub, MockData } from '../../../test-helpers';
 
-const course: Course = {
-  id: 1,
-  name: 'Testing Angular',
-  description: 'Testing Angular Applications'
-};
-const courses: Observable<Course[]> = Observable.of([course]);
-const response: Observable<any> = Observable.of({ status: 200});
-
-class CoursesServiceStub {
-  get() {}
-  create() {}
-  update() {}
-  delete() {}
-}
+const mockData = new MockData();
+const courses = mockData.getCourses();
+const course = mockData.getCourse();
+const response = mockData.getSuccessResponse();
 
 describe('CoursesComponent', () => {
   let component: CoursesComponent;
