@@ -102,12 +102,28 @@ describe('Service: Courses', () => {
     it('should allow course deletion', () => {
       const course = dummyCourses[0];
       service.delete(course).subscribe(res => {
-        console.log(res);
         expect(res).toBeDefined();
       });
 
       const req = httpMock.expectOne(`${service.API_URL}${course.id}`);
       expect(req.request.method).toBe('DELETE');
+    });
+  });
+
+  describe('Service: search method', () => {
+    afterEach(() => {
+      httpMock.verify();
+    });
+
+    it('should allow search with params', () => {
+      const searchTerm = 'Angular';
+      service.search(searchTerm).subscribe(courses => {
+        expect(courses).toEqual(dummyCourses);
+      });
+
+      const req = httpMock.expectOne(`${service.API_URL}?q=${searchTerm}`);
+      expect(req.request.method).toBe('GET');
+      req.flush(dummyCourses);
     });
   });
 });

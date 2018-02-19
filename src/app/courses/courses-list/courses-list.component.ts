@@ -10,6 +10,7 @@ import { Course } from '../../model';
 })
 export class CoursesListComponent {
     @Input() courses: Observable<Course[]>;
+    @Input() readonly: boolean;
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
 }

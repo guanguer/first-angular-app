@@ -1,5 +1,6 @@
 <div class="container">
     <div class="col-50">
-        <app-courses></app-courses>
+        <app-courses-search (fetch)="handleResults($event)"></app-courses-search>
+        <app-courses-list [courses]="courses" [readonly]="true"></app-courses-list>
     </div>
 </div>
