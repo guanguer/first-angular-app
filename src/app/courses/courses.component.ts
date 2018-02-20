@@ -11,7 +11,7 @@ import { Course } from '../model/course.model';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  courses: Observable<Course[]>;
+  courses$: Observable<Course[]>;
   selectedCourse: Course;
 
   constructor(private coursesService: CoursesService) {}
@@ -22,7 +22,7 @@ export class CoursesComponent implements OnInit {
   }
 
   getCourses() {
-    this.courses = this.coursesService.get();
+    this.courses$ = this.coursesService.get();
   }
 
   select(course: Course) {

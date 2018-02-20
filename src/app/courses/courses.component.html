@@ -1,6 +1,6 @@
 <div class="container">
   <app-courses-list class="col-50" 
-    [courses]="courses"
+    [courses$]="courses$"
     (selected)="select($event)"
     (deleted)="delete($event)">
   </app-courses-list>

@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Newsletter</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <form novalidate #subsForm="ngForm" [formGroup]="subscriber"
+        (submit)="subscribe(subscriber); subsForm.resetForm();">
+    <mat-card-content>
+      <mat-input-container class="full-width">
+        <input type="text" matInput placeholder="Name" formControlName="name">
+      </mat-input-container>
+      <mat-input-container class="full-width">
+        <input type="text" matInput placeholder="Email" formControlName="email">
+      </mat-input-container>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-button [disabled]="!subscriber.valid">Subscribe!</button>
+      <button type="button" mat-button (click)="reset(); subsForm.resetForm();">Cancel</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

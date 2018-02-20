@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
@@ -12,7 +12,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { CoursesListComponent } from './courses/courses-list/courses-list.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { CoursesSearchComponent } from './courses/courses-search/courses-search.component';
-import { CoursesService } from './services';
+import { CoursesService, NotificationService } from './services';
+import { NewsletterComponent } from './newsletter/newsletter.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CoursesService } from './services';
     CoursesComponent,
     CoursesListComponent,
     CourseDetailComponent,
-    CoursesSearchComponent
+    CoursesSearchComponent,
+    NewsletterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,9 +31,10 @@ import { CoursesService } from './services';
     AppMaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [CoursesService],
+  providers: [CoursesService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,9 +14,9 @@ import { Course } from '../model/course.model';
 import { CoursesServiceStub, MockData } from '../../../test-helpers';
 
 const mockData = new MockData();
-const courses = mockData.getCourses();
 const course = mockData.getCourse();
-const response = mockData.getSuccessResponse();
+const courses$ = mockData.getCourses();
+const response$ = mockData.getSuccessResponse();
 
 describe('CoursesComponent', () => {
   let component: CoursesComponent;
@@ -33,7 +33,7 @@ describe('CoursesComponent', () => {
 
     injector = getTestBed();
     service = injector.get(CoursesService);
-    spyGet = spyOn(service, 'get').and.returnValue(courses);
+    spyGet = spyOn(service, 'get').and.returnValue(courses$);
 
     const fixture = TestBed.createComponent(CoursesComponent);
     component = fixture.debugElement.componentInstance;
@@ -42,7 +42,7 @@ describe('CoursesComponent', () => {
 
   it('should create the courses component', () => {
     expect(component).toBeTruthy();
-    expect(component.courses).toBe(courses);
+    expect(component.courses$).toBe(courses$);
   });
 
   describe('Course selection', () => {
@@ -65,13 +65,13 @@ describe('CoursesComponent', () => {
     let spySave: any;
     it('should create a new course', () => {
       const newCourse = Object.assign({}, course, {id: null});
-      spySave = spyOn(service, 'create').and.returnValue(response);
+      spySave = spyOn(service, 'create').and.returnValue(response$);
       component.save(newCourse);
       expect(service.create).toHaveBeenCalled();
     });
 
     it('should update an existing course', () => {
-      spySave = spyOn(service, 'update').and.returnValue(response);
+      spySave = spyOn(service, 'update').and.returnValue(response$);
       component.save(course);
       expect(service.update).toHaveBeenCalled();
     });
@@ -80,7 +80,7 @@ describe('CoursesComponent', () => {
   describe('Course delete', () => {
     let spyDelete: any;
     it('should delete a course', () => {
-      spyDelete = spyOn(service, 'delete').and.returnValue(response);
+      spyDelete = spyOn(service, 'delete').and.returnValue(response$);
       component.delete(course);
       expect(service.delete).toHaveBeenCalled();
     });
