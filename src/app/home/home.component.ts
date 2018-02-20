@@ -10,7 +10,7 @@ import { Course } from '../model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  courses: Observable<Course[]>;
+  courses$: Observable<Course[]>;
 
   constructor(private coursesService: CoursesService) {}
 
@@ -19,10 +19,10 @@ export class HomeComponent implements OnInit {
   }
 
   getCourses() {
-    this.courses = this.coursesService.get();
+    this.courses$ = this.coursesService.get();
   }
 
   handleResults(courses) {
-    this.courses = courses;
+    this.courses$ = courses;
   }
 }

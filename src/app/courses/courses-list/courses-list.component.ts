@@ -9,7 +9,7 @@ import { Course } from '../../model';
     styleUrls: ['./courses-list.component.css']
 })
 export class CoursesListComponent {
-    @Input() courses: Observable<Course[]>;
+    @Input() courses$: Observable<Course[]>;
     @Input() readonly: boolean;
     @Output() selected = new EventEmitter();
     @Output() deleted = new EventEmitter();
